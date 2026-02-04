@@ -3,7 +3,7 @@
 PERSON1=Suresh
 PERSON2=Ramesh
 
-echo "$PERSON1: Hi $PERSON2, How are you?"
-echo "$PERSON2: Hello $PERSON1, am good. what about you?"
-echo "$PERSON1: How is going on your work?"
-echo "$PERSON2: Its as usual only $PERSON1"
+echo "Suresh: Hi Ramesh, How are you?"
+echo "Ramesh: Hello Suresh, am good. what about you?"
+echo "Suresh: How is going on your work?"
+echo "Ramesh: Its as usual only Suresh"
