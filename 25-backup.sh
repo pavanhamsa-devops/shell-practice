@@ -42,9 +42,21 @@ if [ ! -d $DEST_DIR ]; then
     exit 1
 fi
 
+#Find the files
 FILE=$(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
 
 log "backup started"
 log "Source Directory: $SOURCE_DIR"
 log "Destination Directory: $DEST_DIR"
 log "Days: $DAYS"
+
+#To check if variable is empty or not
+if [ -z $FILES ]; then
+    log "no files to archive"
+else
+    #app-logs-$timestamp.zip - format of zip file
+    log "files found to archive: $FILES"
+    TIMESTAMP=$(date +%F-%H-%M-%S)
+    ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.tar.gz"
+    echo "Archive name: $ZIP_FILE_NAME"
+fi
