@@ -21,7 +21,7 @@ fi
 mkdir -p $LOGS_FOLDER
 
 USAGE(){
-    echo -e "$R USAGE:: udo backup <SOURCE_DIR> <DEST_DIR> <DAYS>[Default 14days] $N"
+    echo -e "$R USAGE:: Sudo backup <SOURCE_DIR> <DEST_DIR> <DAYS>[Default 14days] $N"
     exit 1
 }
 
@@ -33,12 +33,12 @@ if [ $# -lt 2 ]; then
 fi
 
 if [ ! -d $SOURCE_DIR ]; then
-    echo -e "$R Source directory: $SOURCE_DIR does not exist $N"
+    log "$R Source directory: $SOURCE_DIR does not exist $N"
     exit 1
 fi
 
 if [ ! -d $DEST_DIR ]; then
-    echo -e "$R Destination directory: $DEST_DIR does not exist $N"
+    log "$R Destination directory: $DEST_DIR does not exist $N"
     exit 1
 fi
 
@@ -58,7 +58,7 @@ else
     log "$G files found to archive: $FILES $N"
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.tar.gz"
-    echo "Archive name: $ZIP_FILE_NAME"
+    log "Archive name: $ZIP_FILE_NAME"
     tar -zcvf $ZIP_FILE_NAME $(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
 
     # check archive is success or not
@@ -66,9 +66,9 @@ else
         log "$G Archival is...Success $N"
 
         while IFS= read -r filepath; do
-        echo "Deleting file: $filepath"
+        log "Deleting file: $filepath"
         rm -f $filepath
-        echo "Deleted file: $filepath"
+        log "Deleted file: $filepath"
         done <<< $FILES
     else 
         log "$G Archival is...Failure $N"
