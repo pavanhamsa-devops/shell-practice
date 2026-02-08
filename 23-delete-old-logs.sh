@@ -6,7 +6,7 @@ Y="\e[33m"
 B="\e[34m"
 N="\e[0m"
 
-LOGS-DIR=/home/ec2-user/app-logs
+LOGS_DIR=/home/ec2-user/app-logs
 LOGS_FILE="$LOGS_DIR/$0.log"
 
 if [ ! -d $LOGS_DIR ]; then
