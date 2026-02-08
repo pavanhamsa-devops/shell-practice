@@ -43,7 +43,7 @@ if [ ! -d $DEST_DIR ]; then
 fi
 
 #Find the files
-FILE=$(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
 
 log "backup started"
 log "Source Directory: $SOURCE_DIR"
