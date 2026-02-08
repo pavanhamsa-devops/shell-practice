@@ -51,7 +51,7 @@ log "Destination Directory: $DEST_DIR"
 log "Days: $DAYS"
 
 #To check if variable is empty or not
-if [ -z $FILES ]; then
+if [ ! -z $FILES ]; then
     log "no files to archive"
 else
     #app-logs-$timestamp.zip - format of zip file
