@@ -59,4 +59,17 @@ else
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.tar.gz"
     echo "Archive name: $ZIP_FILE_NAME"
+    find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | tar -zcvf $ZIP_FILE_NAME
+
+    # check archive is success or not
+    if [ -f $ZIP_FILE_NAME ]; then
+        log "$G Archival is...Success $N"
+        while IFS= read -r filepath; do
+        echo "Deleting file: $filepath"
+        rm -f $filepath
+        echo "Deleted file: $filepath"
+        done <<< $FILES
+    else 
+        log "$G Archival is...Failure $N"
+        exit 1
 fi
