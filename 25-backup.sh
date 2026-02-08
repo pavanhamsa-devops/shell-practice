@@ -64,6 +64,7 @@ else
     # check archive is success or not
     if [ -f $ZIP_FILE_NAME ]; then
         log "$G Archival is...Success $N"
+        
         while IFS= read -r filepath; do
         echo "Deleting file: $filepath"
         rm -f $filepath
