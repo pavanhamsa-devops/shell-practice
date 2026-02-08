@@ -55,7 +55,7 @@ if [ -z $FILES ]; then
     log "no files to archive"
 else
     #app-logs-$timestamp.zip - format of zip file
-    log "files found to archive: $FILES"
+    log "$G files found to archive: $FILES $N"
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.tar.gz"
     echo "Archive name: $ZIP_FILE_NAME"
